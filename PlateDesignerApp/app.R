@@ -1,12 +1,11 @@
 library(shiny)
 library(readxl)
-library(here)
 library(bslib)
 library(ggplate)
 
 # Define UI ----
 ui <- page_sidebar(
-  title = "title panel",
+  title = "Plate Designer",
   sidebar = sidebar(
     "Parameters", 
     position = "left",
@@ -16,12 +15,20 @@ ui <- page_sidebar(
       accept = ".xlsx"),
     selectInput( 
       "wellNumber", 
-      "Select the correct plate:", 
-      list("6 wells" = "6", "12 wells" = "12", "24 wells" = "24") 
+      "Select the plate type:", 
+      list(
+        "6 wells" = "6", 
+        "12 wells" = "12", 
+        "24 wells" = "24",
+        "48 wells" = "48",
+        "96 wells" = "96",
+        "384 wells" = "384",
+        "1536 wells" = "1536"
+        ) 
     ),
     selectInput( 
-      "plateType", 
-      "Select a plate type:", 
+      "wellShape", 
+      "Select the shape of the wells:", 
       list("round", "square") 
     ),
     textInput( 
@@ -30,7 +37,6 @@ ui <- page_sidebar(
       placeholder = "Enter Title Here..."
     ), 
   ),
-  "Main contents",
   card(
     card_header("Plate Design"),
     plotOutput(outputId = "PlatePlot")
@@ -54,7 +60,7 @@ server <- function(input, output) {
       value = Compound,
       label = Value,
       plate_size = input$wellNumber,
-      plate_type = input$plateType,
+      plate_type = input$wellShape,
       title = input$titleField,
       title_size = 23  
     )
