@@ -3,15 +3,25 @@ library(shiny)
 library(readxl)
 library(bslib)
 library(ggplate)
+library(shinyjs)
 
 # UI
 ui <- page_sidebar(
+  tags$head(
+    tags$link(rel = "stylesheet", href = "style.css"),
+    tags$script(src = "custom.js"),
+    useShinyjs()
+  ),
   # UI title
   title = "Plate Designer",
   # start sidebar
   sidebar = sidebar(
+    id = "main-sidebar",
     # sidebar title
-    "Parameters",
+    tags$h2(
+      class = "sidebar-title",
+      "Parameters"
+    ),
     # sidebar position
     position = "left",
     # browse excel file
@@ -19,6 +29,21 @@ ui <- page_sidebar(
       "excelFile", 
       "Choose .xlsx File", 
       accept = ".xlsx"
+    ),
+    selectInput("theme_selector", "Themes",
+                choices = c(
+                  "Mint" = "mint",
+                  "Forest" = "forest",
+                  "Ocean" = "ocean",
+                  "Sunset" = "sunset",
+                  "Lavender" = "lavender",
+                  "Citrus" = "citrus",
+                  "Coral" = "coral",
+                  "Berry" = "berry",
+                  "Spring" = "spring",
+                  "Sky" = "sky"
+                ),
+                selected = "mint"
     ),
     # choose well plate type
     selectInput(
@@ -73,6 +98,22 @@ ui <- page_sidebar(
       value = 2024,
       min = 1
     ),
+    # themes
+    selectInput("theme_selector", "Themes",
+                choices = c(
+                  "Mint" = "mint",
+                  "Forest" = "forest",
+                  "Ocean" = "ocean",
+                  "Sunset" = "sunset",
+                  "Lavender" = "lavender",
+                  "Citrus" = "citrus",
+                  "Coral" = "coral",
+                  "Berry" = "berry",
+                  "Spring" = "spring",
+                  "Sky" = "sky"
+                ),
+                selected = "mint"
+    ),
     # switch to hide labels
     input_switch(
       "labelSwitch", 
@@ -91,22 +132,45 @@ ui <- page_sidebar(
       "Randomize",
       value = FALSE
     ),
-    input_dark_mode(id = "mode"),
+    # Width
+    numericInput(
+      "downloadWidth", 
+      "Download Width", 
+      value = 17,
+      min = 1
+    ),
+    # Height
+    numericInput(
+      "downloadHeight", 
+      "Download Height", 
+      value = 8,
+      min = 1
+    ),
+    # Res
+    numericInput(
+      "downloadRes", 
+      "Download Resolution", 
+      value = 300,
+      min = 1
+    ),
     # button to download the plot
     downloadButton(
       "downloadPlot", 
-      "Plot"
+      "Regular plate",
+      class = "custom-download-btn"
     ),
     # button to download the gradient plot
     downloadButton(
       "downloadPlotGradient", 
-      "Gradient Plot"
+      "Gradient Plate",
+      class = "custom-download-btn"
     ),
     # button to download the gradient plot
     downloadButton(
       "downloadPlotCompoundAsLabel", 
-      "Plot With Compound As Label"
-    )
+      "Plate With Compound As Label",
+      class = "custom-download-btn"
+    ),
   ),
   # making the tabs
   fluidPage(
@@ -126,10 +190,18 @@ ui <- page_sidebar(
         card(
           card_header("Plate Design With Compound As Label"),
             uiOutput(outputId = "PlatePlotCompoundAsLabelOutputUI")
-)))))
+))),
+"* Thanks to the ggplate package for making this possible"
+))
 
 # server
 server <- function(input, output) {
+  # set theme
+  observe({
+    theme <- input$theme_selector
+    js <- sprintf("document.documentElement.setAttribute('data-theme', '%s');", theme)
+    shinyjs::runjs(js)
+  })
 
   # loading data
   file_data <- reactive({
@@ -264,7 +336,7 @@ server <- function(input, output) {
     },
     content = function(file) {
       # PNG properties (width, height, resolution)
-      png(file, width = 10, height = 6, unit = "in", res = 300)
+      png(file, input$downloadWidth, input$downloadHeight, unit = "in", res = input$downloadRes)
       # plot with labels
       if (input$labelSwitch) {
         print(plate_plot(
@@ -308,7 +380,7 @@ server <- function(input, output) {
     },
     content = function(file) {
       # PNG properties (width, height, resolution)
-      png(file, file, width = 10, height = 6, unit = "in", res = 300)
+      png(file, input$downloadWidth, input$downloadHeight, unit = "in", res = input$downloadRes)
       # plot gradient with labels
       if (input$labelSwitch) {
         print(plate_plot(
@@ -350,7 +422,7 @@ server <- function(input, output) {
     },
     content = function(file) {
       # PNG properties (width, height, resolution)
-      png(file, file, width = 10, height = 6, unit = "in", res = 300)
+      png(file, input$downloadWidth, input$downloadHeight, unit = "in", res = input$downloadRes)
       # plot with compound as label
       print(plate_plot(
         data = file_data(),
