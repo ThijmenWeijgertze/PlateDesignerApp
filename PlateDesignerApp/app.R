@@ -191,7 +191,9 @@ ui <- page_sidebar(
           card_header("Plate Design With Compound As Label"),
             uiOutput(outputId = "PlatePlotCompoundAsLabelOutputUI")
 ))),
-"* Thanks to the ggplate package for making this possible"
+"* Thanks to the ggplate package for making this possible",
+tags$br(),
+"* Packages used: shiny, readxl, bslib, ggplate, shinyjs"
 ))
 
 # server
