@@ -179,24 +179,24 @@ ui <- page_sidebar(
     tabsetPanel(
       # Normal tab
       tabPanel("Regular plate",
-        card(
-          card_header("Plate Design"),
-            uiOutput(outputId = "PlatePlotOutputUI")
-              )),
+               card(
+                 card_header("Plate Design"),
+                 uiOutput(outputId = "PlatePlotOutputUI")
+               )),
       tabPanel("Gradient Plate",
-        card(
-          card_header("Plate Design Gradient"),
-            uiOutput(outputId = "PlatePlotGradientOutputUI")
-              )),
+               card(
+                 card_header("Plate Design Gradient"),
+                 uiOutput(outputId = "PlatePlotGradientOutputUI")
+               )),
       tabPanel("Plate With Compound As Label",
-        card(
-          card_header("Plate Design With Compound As Label"),
-            uiOutput(outputId = "PlatePlotCompoundAsLabelOutputUI")
-))),
-"* Thanks to the ggplate package for making this possible",
-tags$br(),
-"* Packages used: shiny, readxl, bslib, ggplate, shinyjs"
-))
+               card(
+                 card_header("Plate Design With Compound As Label"),
+                 uiOutput(outputId = "PlatePlotCompoundAsLabelOutputUI")
+               ))),
+    "* Thanks to the ggplate package for making this possible",
+    tags$br(),
+    "* Packages used: shiny, readxl, bslib, ggplate, shinyjs"
+  ))
 
 # server
 server <- function(input, output) {
@@ -214,7 +214,8 @@ server <- function(input, output) {
     },
     content = function(file) {
       file.copy("data/PlateDesignTemplate.xlsx", file)
-    }
+    },
+    contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
   )
   
   # loading data
@@ -367,7 +368,7 @@ server <- function(input, output) {
           legend_n_row = input$legendRows,
           label_size = input$labelSize
         ))
-      # plot without labels
+        # plot without labels
       } else {
         print(plate_plot(
           data = file_data(),
@@ -384,7 +385,8 @@ server <- function(input, output) {
       }
       # stop PNG render process
       dev.off()
-    }
+    },
+    contentType = "image/png"
   )
   # downloading gradient plot
   output$downloadPlotGradient <- downloadHandler(
@@ -426,7 +428,8 @@ server <- function(input, output) {
       }
       # stop PNG render process
       dev.off()
-    }
+    },
+    contentType = "image/png"
   )
   # downloading gradient plot
   output$downloadPlotCompoundAsLabel <- downloadHandler(
@@ -454,7 +457,8 @@ server <- function(input, output) {
       ))
       # stop PNG render process
       dev.off()
-    }
+    },
+    contentType = "image/png"
   )
 }
 
