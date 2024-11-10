@@ -1,0 +1,301 @@
+:root[data-theme="forest"] {
+    --gradient-start: #d4fc79;
+    --gradient-end: #96e6a1;
+    --navbar-bg: #6BBF59;
+    --primary: #2F855A;
+    --secondary: #38A169;
+    --text: #2F855A;
+    --sidebar-bg: lightgreen;
+    --link-color: darkgreen;
+}
+
+:root[data-theme="ocean"] {
+    --gradient-start: #a1c4fd;
+    --gradient-end: #c2e9fb;
+    --navbar-bg: #4299E1;
+    --primary: #2B6CB0;
+    --secondary: #4299E1;
+    --text: #2C5282;
+    --sidebar-bg: #BEE3F8;
+    --link-color: #2B6CB0;
+}
+
+:root[data-theme="sunset"] {
+    --gradient-start: #fad0c4;
+    --gradient-end: #ffd1ff;
+    --navbar-bg: #ED64A6;
+    --primary: #B83280;
+    --secondary: #ED64A6;
+    --text: #97266D;
+    --sidebar-bg: #FED7E2;
+    --link-color: #B83280;
+}
+
+:root[data-theme="lavender"] {
+    --gradient-start: #E6E6FA;
+    --gradient-end: #D8BFD8;
+    --navbar-bg: #9F7AEA;
+    --primary: #805AD5;
+    --secondary: #9F7AEA;
+    --text: #6B46C1;
+    --sidebar-bg: #E9D8FD;
+    --link-color: #805AD5;
+}
+
+:root[data-theme="citrus"] {
+    --gradient-start: #FFF59D;
+    --gradient-end: #FFF176;
+    --navbar-bg: #FBC02D;
+    --primary: #F57F17;
+    --secondary: #FBC02D;
+    --text: #F57F17;
+    --sidebar-bg: #FFF9C4;
+    --link-color: #F57F17;
+}
+
+:root[data-theme="mint"] {
+    --gradient-start: #E0F2F1;
+    --gradient-end: #B2DFDB;
+    --navbar-bg: #4DB6AC;
+    --primary: #00897B;
+    --secondary: #4DB6AC;
+    --text: #00796B;
+    --sidebar-bg: #E0F2F1;
+    --link-color: #00897B;
+}
+
+:root[data-theme="coral"] {
+    --gradient-start: #FFE0B2;
+    --gradient-end: #FFCCBC;
+    --navbar-bg: #FF8A65;
+    --primary: #F4511E;
+    --secondary: #FF8A65;
+    --text: #E64A19;
+    --sidebar-bg: #FBE9E7;
+    --link-color: #F4511E;
+}
+
+:root[data-theme="berry"] {
+    --gradient-start: #F8BBD0;
+    --gradient-end: #F48FB1;
+    --navbar-bg: #EC407A;
+    --primary: #D81B60;
+    --secondary: #EC407A;
+    --text: #C2185B;
+    --sidebar-bg: #FCE4EC;
+    --link-color: #D81B60;
+}
+
+:root[data-theme="spring"] {
+    --gradient-start: #DCEDC8;
+    --gradient-end: #C5E1A5;
+    --navbar-bg: #9CCC65;
+    --primary: #7CB342;
+    --secondary: #9CCC65;
+    --text: #558B2F;
+    --sidebar-bg: #F1F8E9;
+    --link-color: #7CB342;
+}
+
+:root[data-theme="sky"] {
+    --gradient-start: #B3E5FC;
+    --gradient-end: #81D4FA;
+    --navbar-bg: #29B6F6;
+    --primary: #039BE5;
+    --secondary: #29B6F6;
+    --text: #0288D1;
+    --sidebar-bg: #E1F5FE;
+    --link-color: #039BE5;
+}
+
+/* Common Styles using CSS Variables */
+body {
+    background-image: linear-gradient(
+        120deg, 
+        var(--gradient-start) 0%, 
+        var(--gradient-end) 100%
+    );
+    min-height: 100vh;
+    cursor: default;
+}
+
+.navbar {
+    background: var(--navbar-bg) !important;
+}
+
+.navbar-brand {
+    color: var(--primary) !important;
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    padding: 15px 20px !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 8px !important;
+    margin: 10px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.3s ease !important;
+}
+
+#main-sidebar,
+.bslib-sidebar {
+    background: var(--sidebar-bg) !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.5) !important;
+    padding: 20px !important;
+}
+
+/* Rest of your existing CSS styles, replacing hardcoded colors with variables */
+.card-header {
+    color: var(--text);
+}
+
+.nav-tabs .nav-link {
+    color: var(--link-color);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary) !important;
+}
+
+.nav-tabs .nav-link.active::after {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
+.btn-download,
+.downloadButton,
+.custom-download-btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+}
+
+#theme_selector {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-title {
+    font-size: 24px !important;
+    font-weight: bold !important;
+    color: var(--text) !important;
+}
+
+/* Button Hover Effects */
+.btn,
+button,
+.action-button,
+.btn-primary,
+.btn-default {
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+    border: none !important;
+    color: white !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.btn:hover,
+button:hover,
+.action-button:hover,
+.btn-primary:hover,
+.btn-default:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    background: linear-gradient(135deg, var(--secondary), var(--primary)) !important;
+}
+
+.btn:active,
+button:active,
+.action-button:active,
+.btn-primary:active,
+.btn-default:active {
+    transform: translateY(1px) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Optional: Add ripple effect */
+.btn::after,
+button::after,
+.action-button::after,
+.btn-primary::after,
+.btn-default::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    transition: width 0.6s, height 0.6s !important;
+}
+
+.btn:hover::after,
+button:hover::after,
+.action-button:hover::after,
+.btn-primary:hover::after,
+.btn-default:hover::after {
+    width: 200px !important;
+    height: 200px !important;
+}
+
+.btn,
+button,
+.action-button,
+.btn-primary,
+.btn-default,
+a,
+.nav-link,
+select,
+input[type="button"],
+input[type="submit"] {
+    cursor: pointer;
+}
+
+/* Cursor for text inputs */
+input[type="text"],
+input[type="number"],
+textarea {
+    cursor: text;
+}
+
+/* Cursor for disabled elements */
+.disabled,
+button:disabled,
+input:disabled {
+    cursor: not-allowed !important;
+}
+
+.mouse-trail {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    mix-blend-mode: screen;
+    transition: opacity 0.1s ease;
+    box-shadow: 0 0 8px var(--primary); /* Increased glow effect */
+    filter: brightness(1.2); /* Make colors slightly brighter */
+}
+
+.btn:hover,
+button:hover,
+.action-button:hover {
+    box-shadow: 0 0 15px var(--primary) !important;
+}
+
+.cursor-help {
+    cursor: help;
+}
+
+.cursor-move {
+    cursor: move;
+}
+
+.cursor-zoom {
+    cursor: zoom-in;
+}
