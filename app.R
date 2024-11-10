@@ -463,9 +463,9 @@ shinyApp(ui = ui, server = server)
 
 # to publish on github:
 # install.packages("shinylive") (if not done yet)
+# shinylive::export(appdir = ".", destdir = "docs", resources = c("data", "www"))
 # git -b checkout gh-pages (use this when you have not created a gh-pages branch)
 # git checkout gh-pages (otherwise use this)
-# shinylive::export(appdir = ".", destdir = ".", resources = c("data", "www"))
 # mv docs/* .
 # git add . (or git add --all)
 # git commit -m "commit message"
