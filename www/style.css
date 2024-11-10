@@ -216,7 +216,7 @@ button:active,
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Optional: Add ripple effect */
+/* Add ripple effect */
 .btn::after,
 button::after,
 .action-button::after,

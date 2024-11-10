@@ -24,6 +24,8 @@ ui <- page_sidebar(
     ),
     # sidebar position
     position = "left",
+    # download the excel file
+    downloadButton("downloadData", "Download Excel Template"),
     # browse excel file
     fileInput(
       "excelFile", 
@@ -204,11 +206,22 @@ server <- function(input, output) {
     js <- sprintf("document.documentElement.setAttribute('data-theme', '%s');", theme)
     shinyjs::runjs(js)
   })
-
+  
+  # for downloading the excel data
+  output$downloadData <- downloadHandler(
+    filename = function() {
+      "PlateDesignTemplate.xlsx"
+    },
+    content = function(file) {
+      file.copy("data/PlateDesignTemplate.xlsx", file)
+    }
+  )
+  
   # loading data
   file_data <- reactive({
-    # loading in normal data
+    # requires a choosen excell file
     req(input$excelFile)
+    # choose the correct sheet and store it in data
     data <- read_excel(input$excelFile$datapath, sheet = paste0(input$wellNumber, "well"))
     # randomize the data if switch is set to TRUE
     if (input$randomSwitch) {
@@ -447,3 +460,6 @@ server <- function(input, output) {
 
 # Run the app
 shinyApp(ui = ui, server = server)
+
+# to publish on github:
+# mv docs/* . in terminal and then just committing + pushing (don't forget to configure the github pages on your repo settings)
