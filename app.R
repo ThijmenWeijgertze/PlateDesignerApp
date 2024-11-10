@@ -462,4 +462,11 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 
 # to publish on github:
-# mv docs/* . in terminal and then just committing + pushing (don't forget to configure the github pages on your repo settings)
+# install.packages("shinylive") (if not done yet)
+# git -b checkout gh-pages (use this when you have not created a gh-pages branch)
+# git checkout gh-pages (otherwise use this)
+# shinylive::export(appdir = ".", destdir = ".", resources = c("data", "www"))
+# mv docs/* .
+# git add . (or git add --all)
+# git commit -m "commit message"
+# git push origin gh-pages
