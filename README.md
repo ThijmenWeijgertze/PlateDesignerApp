@@ -8,7 +8,7 @@ I couldn't find any "good" applications online to design my well plates. I also 
 - Install the following package: bslib, shiny, readxl, ggplate (I'll automate this in the future)
 - Open the project file in Rstudio.
 - Open the app.R file -> press Run
-- Or alternatively run `runApp(".")` in the R console
+- Or alternatively run `runApp()` in the R console
 
 ## Running via github pages
 Work in progress. The site runs on github pages, but the download buttons fail to work.
