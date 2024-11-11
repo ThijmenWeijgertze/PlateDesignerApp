@@ -59,7 +59,8 @@ ui <- page_sidebar(
         "96 wells" = "96",
         "384 wells" = "384",
         "1536 wells" = "1536"
-      )
+      ),
+      selected = "96"
     ),
     # shape of the wells
     selectInput(
