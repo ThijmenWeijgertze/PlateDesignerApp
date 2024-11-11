@@ -103,23 +103,6 @@ ui <- page_sidebar(
       value = 2024,
       min = 1
     ),
-    # themes
-    selectInput("theme_selector", "Themes",
-                choices = c(
-                  "Mint" = "mint",
-                  "Forest" = "forest",
-                  "Ocean" = "ocean",
-                  "Sunset" = "sunset",
-                  "Lavender" = "lavender",
-                  "Citrus" = "citrus",
-                  "Coral" = "coral",
-                  "Berry" = "berry",
-                  "Spring" = "spring",
-                  "Sky" = "sky",
-                  "Dark" = "dark"
-                ),
-                selected = "mint"
-    ),
     # switch to hide labels
     input_switch(
       "labelSwitch", 
