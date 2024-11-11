@@ -44,7 +44,7 @@ ui <- page_sidebar(
                   "Berry" = "berry",
                   "Spring" = "spring",
                   "Sky" = "sky",
-                  "Boring" = "dark"
+                  "Silver" = "dark"
                 ),
                 selected = "mint"
     ),
