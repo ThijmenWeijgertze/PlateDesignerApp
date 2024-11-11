@@ -108,7 +108,7 @@
     --link-color: #039BE5;
 }
 
-:root[data-theme="dark"] {
+:root[data-theme="silver"] {
     --gradient-start: #e0e0e0;
     --gradient-end: #f0f0f0;
     --navbar-bg: #d0d0d0;

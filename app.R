@@ -32,21 +32,22 @@ ui <- page_sidebar(
       "Choose .xlsx File", 
       accept = ".xlsx"
     ),
+    # themes
     selectInput("theme_selector", "Themes",
                 choices = c(
-                  "Mint" = "mint",
-                  "Forest" = "forest",
-                  "Ocean" = "ocean",
-                  "Sunset" = "sunset",
-                  "Lavender" = "lavender",
-                  "Citrus" = "citrus",
-                  "Coral" = "coral",
-                  "Berry" = "berry",
-                  "Spring" = "spring",
-                  "Sky" = "sky",
-                  "Silver" = "dark"
+                  "Menthol" = "mint",
+                  "Photosynthesis" = "forest",
+                  "H2O" = "ocean",
+                  "Phenolphthalein" = "sunset",
+                  "Linalool" = "lavender",
+                  "Citric acid cycle" = "citrus",
+                  "Zooxanthellae" = "coral",
+                  "Anthocyanin" = "berry",
+                  "Phototropism" = "spring",
+                  "Stratosphere" = "sky",
+                  "Argentum" = "silver"
                 ),
-                selected = "mint"
+                selected = "Menthol"
     ),
     # choose well plate type
     selectInput(
