@@ -108,6 +108,17 @@
     --link-color: #039BE5;
 }
 
+:root[data-theme="dark"] {
+    --gradient-start: #e0e0e0;
+    --gradient-end: #f0f0f0;
+    --navbar-bg: #d0d0d0;
+    --primary: #c0c0c0;
+    --secondary: #b0b0b0;
+    --text: #a0a0a0;
+    --sidebar-bg: #e8e8e8;
+    --link-color: #909090;
+}
+
 /* Common Styles using CSS Variables */
 body {
     background-image: linear-gradient(

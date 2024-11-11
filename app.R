@@ -43,7 +43,8 @@ ui <- page_sidebar(
                   "Coral" = "coral",
                   "Berry" = "berry",
                   "Spring" = "spring",
-                  "Sky" = "sky"
+                  "Sky" = "sky",
+                  "Boring" = "dark"
                 ),
                 selected = "mint"
     ),
@@ -113,7 +114,8 @@ ui <- page_sidebar(
                   "Coral" = "coral",
                   "Berry" = "berry",
                   "Spring" = "spring",
-                  "Sky" = "sky"
+                  "Sky" = "sky",
+                  "Dark" = "dark"
                 ),
                 selected = "mint"
     ),
@@ -271,7 +273,7 @@ server <- function(input, output) {
     )
   })
   
-  # rendering the normal plot with labels
+  # rendering the gradient plot with labels
   output$PlatePlotGradient <- renderPlot({
     data <- file_data()
     plate_plot(
@@ -288,7 +290,7 @@ server <- function(input, output) {
     )
   })
   
-  # rendering the normal plot without labels
+  # rendering the gradient plot without labels
   output$PlatePlotNoLabelGradient <- renderPlot({
     data <- file_data()
     plate_plot(
