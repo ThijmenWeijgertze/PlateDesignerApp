@@ -4,7 +4,7 @@
 I couldn't find any "good" applications online to design my well plates. I also wanted to experiment using the package Shiny. After browsing I came across the ggplate package. I really liked how this package worked and so I made an app around it.
 
 ## Running locally
-- Clone this repository using the git bash terminal: `git clone <NeedToSeekUpStill>`.
+- Clone this repository using the git bash terminal: `git clone https://github.com/ThijmenWeijgertze/PlateDesignerApp.git`.
 - Install the following package: bslib, shiny, readxl, ggplate (I'll automate this in the future)
 - Open the project file in Rstudio.
 - Open the app.R file -> press Run
