@@ -19,4 +19,3 @@ Work in progress. The site runs on github pages, but the download buttons fail t
 - Fill in your conditions in the Excel file 
 - Press the browse button in the UI
 - Load your Excel file
-
